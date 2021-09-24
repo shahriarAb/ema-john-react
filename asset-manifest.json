@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/ema-john-react/static/css/main.09c657aa.chunk.css",
+    "main.js": "/ema-john-react/static/js/main.852827cc.chunk.js",
+    "main.js.map": "/ema-john-react/static/js/main.852827cc.chunk.js.map",
+    "runtime-main.js": "/ema-john-react/static/js/runtime-main.0a5f57cf.js",
+    "runtime-main.js.map": "/ema-john-react/static/js/runtime-main.0a5f57cf.js.map",
+    "static/js/2.0ae905bb.chunk.js": "/ema-john-react/static/js/2.0ae905bb.chunk.js",
+    "static/js/2.0ae905bb.chunk.js.map": "/ema-john-react/static/js/2.0ae905bb.chunk.js.map",
+    "static/js/3.231d3297.chunk.js": "/ema-john-react/static/js/3.231d3297.chunk.js",
+    "static/js/3.231d3297.chunk.js.map": "/ema-john-react/static/js/3.231d3297.chunk.js.map",
+    "index.html": "/ema-john-react/index.html",
+    "static/css/main.09c657aa.chunk.css.map": "/ema-john-react/static/css/main.09c657aa.chunk.css.map",
+    "static/js/2.0ae905bb.chunk.js.LICENSE.txt": "/ema-john-react/static/js/2.0ae905bb.chunk.js.LICENSE.txt",
+    "static/media/logo.0dd9a510.png": "/ema-john-react/static/media/logo.0dd9a510.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0a5f57cf.js",
+    "static/js/2.0ae905bb.chunk.js",
+    "static/css/main.09c657aa.chunk.css",
+    "static/js/main.852827cc.chunk.js"
+  ]
+}
