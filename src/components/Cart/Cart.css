@@ -1,0 +1,30 @@
+table{
+    text-align: left;
+    width: 100%;
+}
+tr:last-child td{
+    border-top: 1px solid gray;
+}
+.order-total{
+    color: rgb(202, 0, 0);
+    font-size: 20px;
+    font-weight: 700;
+}
+hr{
+    width: 110%;
+}
+.clear-btn{
+    background-color: rgb(235, 203, 24);
+    border: 1.5px solid lightgray;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 700;
+    height: 35px;
+    width: 200px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.clear-btn:hover{
+    background-color: rgba(0, 0, 0, 0.897);
+    color: whitesmoke;
+}

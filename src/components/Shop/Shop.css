@@ -1,0 +1,32 @@
+.search-container{
+    background-color: rgba(22, 20, 20, 0.842);
+    text-align: center;
+    line-height: 40px;
+}
+.search-container input{
+    width: 55%;
+    font-size: 18px;
+    border: 2px solid rgb(43, 10, 10);
+    border-radius: 5px;
+}
+.product-count{
+    display: inline-block;
+    margin-left: 10px;
+    color: whitesmoke;
+    font-size: 20px;
+    font-weight: 600;
+}
+.shop-container{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+.product-container{
+    border-right: 2px solid lightgray;
+    margin-left: 50px;
+}
+.cart-container{
+    margin-left: 10px;
+}
+.cart-container .top-title{
+    text-align: center;
+}
