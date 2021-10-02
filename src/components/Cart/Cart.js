@@ -1,5 +1,4 @@
 import React from 'react';
-import { clearTheCart } from '../../utilities/storage';
 import './Cart.css';
 
 const Cart = props => {
@@ -37,13 +36,7 @@ const Cart = props => {
                     <td>${orderTotal.toFixed(2)}</td>
                 </tr>
             </table>
-            <button
-                className="clear-btn"
-                onClick={() => {
-                    clearTheCart();
-                    window.location.reload()
-                }}
-            >Clear Cart</button>
+            {props.children}
         </div>
     );
 };

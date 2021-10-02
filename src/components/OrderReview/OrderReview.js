@@ -1,5 +1,6 @@
 import React from 'react';
-import { removeFromLocalStorage } from '../../utilities/storage';
+import { useHistory } from 'react-router';
+import { clearTheCart, removeFromLocalStorage } from '../../utilities/storage';
 import Cart from '../Cart/Cart';
 import useCart from '../hooks/useCart';
 import useProducts from '../hooks/useProducts';
@@ -8,11 +9,18 @@ import ReviewItem from '../ReviewItem/ReviewItem';
 const OrderReview = () => {
     const [products] = useProducts();
     const [cart, setCart] = useCart(products);
+    const history = useHistory();
 
     const handleRemove = key => {
         const newCart = cart.filter(product => product.key !== key);
         removeFromLocalStorage(key);
         setCart(newCart);
+    }
+
+    const handlePlaceOrder = () => {
+        history.push('/placeorder');
+        setCart([]);
+        clearTheCart();
     }
     return (
         <div>
@@ -29,7 +37,12 @@ const OrderReview = () => {
                 </div>
                 <div className="cart-container">
                     <div className="top-title">
-                        <Cart cart={cart}></Cart>
+                        <Cart cart={cart}>
+                            <button
+                                className="add-to-cart-btn"
+                                onClick={handlePlaceOrder}
+                            >Place Order</button>
+                        </Cart>
                     </div>
                 </div>
             </div>

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { addToLocalStorage } from '../../utilities/storage';
+import { addToLocalStorage, clearTheCart } from '../../utilities/storage';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import useCart from '../hooks/useCart';
+import { Link } from 'react-router-dom';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
@@ -22,7 +23,17 @@ const Shop = () => {
     }, []);
 
     const handleAddToCart = product => {
-        const newCart = [...cart, product]
+        let newCart = [];
+        const exists = cart.find(pd => pd.key === product.key);
+        if (exists) {
+            const rest = cart.filter(pd => pd.key !== product.key);
+            exists.quantity += 1;
+            newCart = [...rest, product];
+        }
+        else {
+            product.quantity = 1;
+            newCart = [...cart, product]
+        }
         setCart(newCart);
         //adding items into local storage
         addToLocalStorage(product.key);
@@ -57,7 +68,20 @@ const Shop = () => {
                 </div>
                 <div className="cart-container">
                     <div className="top-title">
-                        <Cart cart={cart}></Cart>
+                        <Cart cart={cart}>
+                            <Link to="/review">
+                                <button
+                                    className="add-to-cart-btn"
+                                >Review Your Order</button>
+                            </Link>
+                            <button
+                                className="clear-btn"
+                                onClick={() => {
+                                    clearTheCart();
+                                    setCart([]);
+                                }}
+                            >Clear Cart</button>
+                        </Cart>
                     </div>
                 </div>
             </div>
