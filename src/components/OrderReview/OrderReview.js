@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router';
-import { clearTheCart, removeFromLocalStorage } from '../../utilities/storage';
+import { removeFromLocalStorage } from '../../utilities/storage';
 import Cart from '../Cart/Cart';
 import useCart from '../hooks/useCart';
 import useProducts from '../hooks/useProducts';
@@ -17,10 +17,8 @@ const OrderReview = () => {
         setCart(newCart);
     }
 
-    const handlePlaceOrder = () => {
-        history.push('/placeorder');
-        setCart([]);
-        clearTheCart();
+    const handleProceedToPay = () => {
+        history.push('/shipping');
     }
     return (
         <div>
@@ -40,8 +38,8 @@ const OrderReview = () => {
                         <Cart cart={cart}>
                             <button
                                 className="add-to-cart-btn"
-                                onClick={handlePlaceOrder}
-                            >Place Order</button>
+                                onClick={handleProceedToPay}
+                            >Proceed to Pay</button>
                         </Cart>
                     </div>
                 </div>

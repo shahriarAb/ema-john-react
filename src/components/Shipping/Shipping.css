@@ -1,0 +1,28 @@
+.shipment-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.shipping-form{
+    border-radius: 8px;
+    box-shadow: 1px 1px 15px rgba(128, 128, 128, 0.39);
+    padding: 40px 25px;
+}
+.shipping-form input{
+    display: block;
+    margin-top: 12px;
+    padding: 8px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 300px;
+}
+.submit{
+    margin-left: 8px;
+}
+.error{
+    color: red;
+}
+.payment-method{
+    margin-top: 8px;
+    padding: 5px 40px;
+}

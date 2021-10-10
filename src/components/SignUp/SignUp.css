@@ -1,0 +1,15 @@
+#signup-btn{
+    padding: 8px 25px;
+    border-radius: 5px;
+    background-color: rgb(255, 251, 44);
+    font-weight: 700;
+}
+#name{
+    margin-left: 54px;
+}
+#cr-email{
+    margin-left: 94px;
+}
+#cr-password{
+    margin-left: 66px;
+}

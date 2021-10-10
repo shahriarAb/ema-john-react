@@ -1,0 +1,28 @@
+.signin-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signin-border{
+    border-radius: 8px;
+    box-shadow: 1px 1px 10px rgba(128, 128, 128, 0.596);
+    margin-top: 30px;
+    padding: 40px 30px;
+}
+#email{
+    margin-left: 29px;
+}
+.signin-btn{
+    text-align: center;
+    margin-top: 15px;
+}
+#signin-btn{
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: rgb(162, 162, 247);
+    font-weight: 700;
+}
+.sign-in-with-google{
+    text-align: center;
+    margin-top: 15px;
+}
