@@ -4,7 +4,7 @@ import useAuth from '../hooks/useAuth';
 import './SignIn.css';
 
 const SignIn = () => {
-    const { signInUsingGoogle } = useAuth();
+    const { signInUsingGoogle, signInExistingUser, setEmail, setPassword, error, setError } = useAuth();
     const location = useLocation();
     const history = useHistory();
     const redirect_uri = location.state?.from || '/shop';
@@ -16,17 +16,33 @@ const SignIn = () => {
             });
     }
 
+    const handleExistingUserLogin = e => {
+        e.preventDefault();
+        signInExistingUser()
+            .then(() => history.push(redirect_uri))
+            .catch(error => setError(error.message));
+    }
+
+    const handleEmailChange = e => {
+        setEmail(e.target.value);
+    }
+
+    const handlePasswordChange = e => {
+        setPassword(e.target.value);
+    }
+
     return (
         <div className="signin-form">
             <div className="signin-border">
                 <h2>Sign-In</h2>
-                <form onSubmit="">
+                <form onSubmit={handleExistingUserLogin}>
                     <label htmlFor="email">Email: </label>
-                    <input id="email" type="email" placeholder="Your email here" />
+                    <input onBlur={handleEmailChange} id="email" type="email" placeholder="Your email here" />
                     <br />
                     <label htmlFor="password">Password: </label>
-                    <input id="password" type="password" placeholder="Your password here" />
+                    <input onBlur={handlePasswordChange} id="password" type="password" placeholder="Your password here" />
                     <br />
+                    <span className="error">{error}</span>
                     <div className="signin-btn">
                         <input id="signin-btn" type="submit" value="Sign In" />
                     </div>

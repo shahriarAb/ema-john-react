@@ -7,6 +7,7 @@ const initializeAuthentication = () => {
 
 export default initializeAuthentication;
 
+
 /*
 steps for authentication
 ------------------------
@@ -15,7 +16,7 @@ Step i. Initial Setup
 2. Create a Web App
 3. Get Configuration
 4. Initialize Firebase
-5. Enable auth method(s)[google, email, fb, github etc]
+5. Enable auth method(s)[google, email, fb, github etc.]
 --------------------
 Step ii. Form setup
 1. Create Login Component
@@ -33,7 +34,7 @@ Step iv. Context
 1. Create an auth context
 2. Create a context provider
 3. Set context value after .provider
-4. useAuth provider
+4. Setup useAuth provider
 5. Create use auth hook
 ---------------------
 Step v. Private Route

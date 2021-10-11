@@ -4,23 +4,42 @@ import useAuth from '../hooks/useAuth';
 import './SignUp.css';
 
 const SignUp = () => {
-    const { signInUsingGoogle } = useAuth();
+    const { signInUsingGoogle, setName, setEmail, setPassword, setConfirmPassword, signUpNewUser, error } = useAuth();
+
+    const handleUserName = e => {
+        setName(e.target.value);
+    }
+
+    const handleEmailChange = e => {
+        setEmail(e.target.value);
+    }
+
+    const handlePasswordChange = e => {
+        setPassword(e.target.value);
+    }
+
+    const handleConfirmPasswordChange = e => {
+        setConfirmPassword(e.target.value);
+    }
+
     return (
         <div className="signin-form">
             <div className="signin-border">
                 <h2>Create account</h2>
-                <form onSubmit="">
+                <form onSubmit={signUpNewUser}>
                     <label htmlFor="name">Your Name: </label>
-                    <input id="name" type="text" placeholder="Your full name here" />
+                    <input onBlur={handleUserName} id="name" type="text" placeholder="Your full name here" />
                     <br />
                     <label htmlFor="cr-email">Email: </label>
-                    <input id="cr-email" type="email" placeholder="Your email here" />
+                    <input onBlur={handleEmailChange} id="cr-email" type="email" placeholder="Your email here" />
                     <br />
                     <label htmlFor="cr-password">Password: </label>
-                    <input id="cr-password" type="password" placeholder="At least 6 character" />
+                    <input onBlur={handlePasswordChange} id="cr-password" type="password" placeholder="At least 6 character" />
                     <br />
                     <label htmlFor="password">Re-enter password: </label>
-                    <input id="password" type="password" placeholder="Re-enter your password" />
+                    <input onBlur={handleConfirmPasswordChange} id="password" type="password" placeholder="Re-enter your password" />
+                    <br />
+                    <span className="error">{error}</span>
                     <div className="signin-btn">
                         <input id="signup-btn" type="submit" value="Sign Up" />
                     </div>
