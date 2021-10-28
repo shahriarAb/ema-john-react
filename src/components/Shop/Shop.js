@@ -11,16 +11,23 @@ import { Link } from 'react-router-dom';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useCart(products);
+    //products to render on UI
     const [displayProducts, setDisplayProducts] = useState([]);
+    const [page, setPage] = useState(0);
+    const [pageCount, setPageCount] = useState(0);
+    const size = 10;
 
     useEffect(() => {
-        fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-simple-resources/master/fakeData/products.JSON')
+        fetch(`https://ancient-reef-85789.herokuapp.com/products?page=${page}&&size=${size}`)
             .then(res => res.json())
             .then(data => {
-                setProducts(data);
-                setDisplayProducts(data);
+                setProducts(data.products);
+                setDisplayProducts(data.products);
+                const count = data.count;
+                const pageNumbers = Math.ceil(count / size);
+                setPageCount(pageNumbers);
             });
-    }, []);
+    }, [page]);
 
     const handleAddToCart = product => {
         let newCart = [];
@@ -56,7 +63,7 @@ const Shop = () => {
                 <p style={{ color: 'whitesmoke' }} className="product-count">{cart.reduce((accumulator, current) => accumulator + (!current.quantity ? 1 : current.quantity), 0)}</p>
             </div>
             <div className="shop-container">
-                <div className="product-container">
+                <div id="products" className="product-container">
                     <h2>Products</h2>
                     {
                         displayProducts.map(product => <Product
@@ -65,6 +72,19 @@ const Shop = () => {
                             handleAddToCart={handleAddToCart}
                         ></Product>)
                     }
+
+                    <div className="pagination">
+                        {
+                            [...Array(pageCount).keys()]
+                                .map(number => <a href="#products">
+                                    <button
+                                        className={number === page ? 'selected' : ''}
+                                        key={number}
+                                        onClick={() => setPage(number)}
+                                    >{number + 1}</button>
+                                </a>)
+                        }
+                    </div>
                 </div>
                 <div className="cart-container">
                     <div className="top-title">

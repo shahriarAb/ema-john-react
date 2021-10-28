@@ -5,6 +5,7 @@ import useCart from '../hooks/useCart';
 import { clearTheCart } from '../../utilities/storage';
 import useProducts from '../hooks/useProducts';
 import './Shipping.css';
+import { getData } from '../../utilities/storage';
 import { useHistory } from 'react-router';
 
 const Shipping = () => {
@@ -14,10 +15,25 @@ const Shipping = () => {
     const [, setCart] = useCart(products);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
-        console.log(data);
-        history.push('/placeorder');
-        setCart([]);
-        clearTheCart();
+        const savedCart = getData();
+        data.orders = savedCart;
+
+        fetch('https://ancient-reef-85789.herokuapp.com/orders', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(result => {
+                if (result.insertedId) {
+                    alert('Request accepted!');
+                    setCart([]);
+                    clearTheCart();
+                    history.push('/placeorder');
+                }
+            })
     };
     return (
         <div className="shipment-container">
